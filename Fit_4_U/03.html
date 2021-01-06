@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Fit 4 U</title>
+	<style type="text/css">
+		.center {display:block; display:inline-block; width:30px; height:30px; float:left; margin-left:50px;}
+	</style>
+	<link rel="stylesheet" type="text/css" href="style-size.css"/>
+	<link rel="stylesheet" type="text/css" href="style-layout.css"/>
+	<link rel="stylesheet" type="text/css" href="style-presentation.css"/>
+</head>
+
+<body class="booklist">
+    <div class= "head">-식단 추출을 위한 기본정보 입력-</div>
+<p>
+<form method="post" action="form_app.jsp">
+	<fieldset><legend>기본정보</legend>
+	이     름&nbsp;&nbsp;<input type="text" name="id" id="user_name"/><br>
+	성     별<input type="radio" name="s_type" id="male">남
+	<input type="radio" name="s_type" id="female">여<br>
+	나     이&nbsp;&nbsp;<input type="number" name="age" id="user_age" min="0" max="100" step="1" value="20"><br>
+	</fieldset>
+
+	<fieldset><legend>신체정보</legend>
+	&nbsp;&nbsp;&nbsp;&nbsp;키&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" name="height" id="user_height" min="100" max="220" step="1" value="160"><br/>
+	몸무게&nbsp;<input type="number" name="weight" id="user_weight" min="30" max="120" step="1" value="55"><br/>
+	</fieldset>
+
+	<fieldset><legend>활동정보</legend>
+	운동여부&nbsp;
+	<input type="radio" name="ex1" id="id_ex1">하지않음
+	<input type="radio" name="ex2" id="id_ex2">약한운동
+	<input type="radio" name="ex3" id="id_ex3">적당한운동
+	<input type="radio" name="ex4" id="id_ex4">강한운동</br>
+	신체활동정도&nbsp;
+	<input type="radio" name="act1" id="id_act1">상
+	<input type="radio" name="act2" id="id_act2">중
+	<input type="radio" name="act3" id="id_act3">하</br>
+	운동목적<input type="text" list="purpose"/>
+	<datalist id="purpose">
+		<option value="다이어트">
+		<option value="린매스업">
+		<option value="벌크업">
+	</datalist>
+
+	</fieldset>
+
+	<fieldset><legend>개인정보 활용동의</legend>
+	<input type="radio" name="agree" id="id_agree">동의
+	<input type="radio" name="disagree" id="id_disagree">비동의<br>
+	</fieldset><br>
+
+	<button type="submit">등록하기</button>&nbsp;&nbsp;&nbsp;
+	<button type="reset">취소</button>	
+</form>	
+
+</body>
+</html>

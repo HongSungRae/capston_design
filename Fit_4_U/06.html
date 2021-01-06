@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Fit 4 U</title>
+	<style type="text/css">
+		
+	</style>
+</head>
+<body>
+	<!-- 서버로부터 사용자의 신체정보 받아서 탄-단-지 비율을 뽑아준다 -->
+	<script type="text/javascript">
+		var sex = prompt("당신의 성별은? \n"+"M : 남자 \n"+"F : 여자","M");
+		var age =parseInt(prompt("만 나이 입력",""));
+		var purpose = prompt("운동 목적 입력 \n"+"lin : 린메스업 \n"+"bulk : 벌크업 \n"+"diet : 다이어트 \n","diet");
+		var act;
+		var h = parseInt(prompt("키 입력",""));
+		var w = parseInt(prompt("몸무게 입력",""));
+		var didUexercise = parseInt(prompt("운동여부 \n"+"1 : 하지않음 \n"+"2 : 적은 운동 \n"+"3 : 적당한 운동 \n"+"4 : 격한 운동"));
+
+		var tan;
+		var dan;
+		var zi;
+
+
+		function gicho(w,h,age,sex) {
+			var temp;
+			if (sex =='M'){
+				temp = 66.47 + (13.75*w) + (5*h) - (6.76*age);
+			} else {
+				temp = 655.1 + (9.56*w) + (1.85*h) - (4.68*age);
+			}
+			return temp;
+		}
+
+
+		function uzikcal(w,h,age,sex,didUexercise) {
+			var ratio;
+			var gichokcal = gicho(w,h,age,sex);
+
+			if (didUexercise==1) {
+				ratio = 0.3;
+			} else if (didUexercise==2) {
+				ratio = 0.6;
+			} else if (didUexercise==3) {
+				ratio = 0.75;
+			} else {
+				ratio = 0.9;
+			}
+			return (gichokcal + ratio*gichokcal);
+		}
+
+		function mokpyo(w,h,age,sex,didUexercise,purpose){
+			var kcal;
+			if (purpose=='lin') {
+				kcal = 250 ;
+			} else if (purpose == 'diet') {
+				kcal = 150;
+			} else {
+				kcal = 550;
+			}
+			return (uzikcal(w,h,age,sex,didUexercise)+kcal);
+		}
+
+		function tnadanzi(w,h,age,se,didUexercise,purpose){
+			var mokpyokcal = mokpyo(w,h,age,sex,didUexercise,purpose) ;
+	
+			
+			if (purpose=='diet'){
+				dan = w*2;
+				zi = (mokpyokcal*0.2)/9;
+				tan = (mokpyokcal-4*dan-9*zi)/4;
+			} else if (purpose=='bulk'){
+				dan = w*1.8;
+				zi = (mokpyokcal*0.35)/9;
+				tan = (mokpyokcal-4*dan-9*zi)/4;
+			} else {
+				dan = w*1.8;
+				zi = (mokpyokcal*0.3)/9;
+				tan = (mokpyokcal-4*dan-9*zi)/4;
+			}
+
+		} 
+
+		tnadanzi(w,h,age,sex,didUexercise,purpose);
+		
+		document.write("=추천 하루 섭취 영양소 비율="+"<br>");
+		document.write("탄수화물 :"+tan+"g");
+		document.write("<br>");
+		document.write("단백질 :"+dan+'g');
+		document.write('<br>');
+		document.write("지방 :"+zi+'g');
+		document.write('<br>');
+
+		
+	</script>
+	
+
+</body>
+</html>
